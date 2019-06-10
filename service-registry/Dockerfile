@@ -4,11 +4,10 @@ FROM openjdk:8
 ARG JAR_FILE
 
 ENV WORK_PATH /usr/src/myapp
-#ENV APP_NAME ${JAR_FILE}
 
 RUN mkdir $WORK_PATH
 
-ADD target/${JAR_FILE} $WORK_PATH
+ADD target/${JAR_FILE} $WORK_PATH/app.jar
 
 WORKDIR $WORK_PATH
 
