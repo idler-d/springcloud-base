@@ -1,6 +1,8 @@
 FROM openjdk:8
 
 # 环境变量
+ARG JAR_FILE
+
 ENV WORK_PATH /usr/src/myapp
 #ENV APP_NAME ${JAR_FILE}
 
