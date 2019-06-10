@@ -10,4 +10,4 @@ COPY $APP_NAME $WORK_PATH/app.jar
 
 WORKDIR $WORK_PATH
 
-CMD ["-jar", "-xms64m", "-xmx128m", "app.jar", "--spring.profiles.active=pro"]
+CMD ["java", "-jar", "-xms64m", "-xmx128m", "app.jar", "--spring.profiles.active=pro"]
