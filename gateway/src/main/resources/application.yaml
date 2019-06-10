@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: gateway
+hystrix:
+  command:
+    default:
+      execution:
+        isolution:
+          thread:
+            timeoutInMillisecond: 5000
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 3500
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+zuul:
+  prefix: /api
+  routes:
+    user-service:
+      path: /users/**
+      serviceId: user-service
+      strip-prefix: false
+#  strip-prefix: false
+

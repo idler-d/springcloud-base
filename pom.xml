@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.idler.demo</groupId>
+    <artifactId>springcloud-base</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>service-registry</module>
+        <module>user-service</module>
+        <module>gateway</module>
+        <module>passport-service</module>
+    </modules>
+
+    <properties>
+        <mybatis.version>2.1.5</mybatis.version>
+        <pagehelper.version>1.2.10</pagehelper.version>
+        <mysql-connection.version>8.0.16</mysql-connection.version>
+        <lang3.version>3.9</lang3.version>
+        <lombak.version>1.18.8</lombak.version>
+        <exception.verion>1.0-SNAPSHOT</exception.verion>
+        <commons.verion>1.0-SNAPSHOT</commons.verion>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.9.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connection.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.idler.demo.infrastructure</groupId>
+                <artifactId>exception-spring-boot-starter</artifactId>
+                <version>${exception.verion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.idler.demo.infrastructure</groupId>
+                <artifactId>commons</artifactId>
+                <version>${commons.verion}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombak.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- local private nexus repositories -->
+    <repositories>
+        <repository>
+            <id>nexus-public</id>
+            <name>local private nexus</name>
+            <url>http://nexus.idler.com/repository/maven-public</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus-public</id>
+            <name>local private nexus</name>
+            <url>http://nexus.idler.com/repository/maven-public</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

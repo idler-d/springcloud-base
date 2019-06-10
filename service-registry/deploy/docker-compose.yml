@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  service-registry:
+    build: .
+    image: service-discovery
+    ports:
+      - 8761:8761
+    tty: true
+    stdin_open: true
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
