@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  def mvnHome = tool 'v3.3.9'
+  def mvnHome = tool 'maven3.3.9'
   env.PATH = "${mvnHome}/bin:${env.PATH}"
 
     stage('mvn test'){
