@@ -23,6 +23,7 @@
         <lombak.version>1.18.8</lombak.version>
         <exception.verion>1.0-SNAPSHOT</exception.verion>
         <commons.verion>1.0-SNAPSHOT</commons.verion>
+        <dockerfile.maven.version>1.4.10</dockerfile.maven.version>
     </properties>
 
     <parent>
@@ -103,7 +104,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile.maven.version}</version>
+                <configuration>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
 </project>

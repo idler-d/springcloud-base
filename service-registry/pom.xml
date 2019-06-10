@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <docker.registry>registry.idler.com</docker.registry>
-        <dockerfile.maven.version>1.4.10</dockerfile.maven.version>
+
     </properties>
 
     <dependencies>
@@ -48,9 +48,6 @@
                 <configuration>
                     <repository>${docker.registry}/${project.artifactId}</repository>
                     <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
                 </configuration>
             </plugin>
         </plugins>
