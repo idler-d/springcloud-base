@@ -6,12 +6,13 @@ pipeline {
       maven 'v3.3.9'
   }
 
-    stage('mvn test'){
-        //mvn 测试
-        sh "mvn --version"
-    }
+
 
   stages {
+    stage('mvn test'){
+          //mvn 测试
+          sh "mvn --version"
+      }
     stage('build project') {
       steps {
         sh 'mvn -DskipTests clean package'
