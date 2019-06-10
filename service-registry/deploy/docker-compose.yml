@@ -2,7 +2,7 @@ version: '3.4'
 services:
   service-registry:
     build: .
-    image: service-discovery
+    image: registry.idler.com/service-registry
     ports:
       - 8761:8761
     tty: true

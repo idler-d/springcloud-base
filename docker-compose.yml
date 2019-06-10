@@ -1,0 +1,5 @@
+version: '3.4'
+services:
+  service-registry:
+    build: .
+    image: registry.idler.com/test
