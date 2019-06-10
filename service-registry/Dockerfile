@@ -6,7 +6,7 @@ ENV APP_NAME ${JAR_FILE}
 
 RUN mkdir $WORK_PATH
 
-RUN echo $APP_NAME
+RUN echo ${JAR_FILE}
 
 COPY $APP_NAME $WORK_PATH/app.jar
 
