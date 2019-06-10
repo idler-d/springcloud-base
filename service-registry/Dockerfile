@@ -2,13 +2,11 @@ FROM openjdk:8
 
 # 环境变量
 ENV WORK_PATH /usr/src/myapp
-ENV APP_NAME ${JAR_FILE}
+#ENV APP_NAME ${JAR_FILE}
 
 RUN mkdir $WORK_PATH
 
-RUN echo WORK_PATH
-
-COPY $APP_NAME $WORK_PATH/app.jar
+COPY target/${JAR_FILE} $WORK_PATH/app.jar
 
 WORKDIR $WORK_PATH
 
