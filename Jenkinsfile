@@ -1,12 +1,14 @@
 pipeline {
   agent any
 
-  def mvnHome = tool 'maven3.3.9'
-  env.PATH = "${mvnHome}/bin:${env.PATH}"
+  tools {
+      //工具名称必须在Jenkins 管理Jenkins → 全局工具配置中预配置。
+      maven 'v3.3.9'
+  }
 
     stage('mvn test'){
         //mvn 测试
-        sh "mvn test"
+        sh "mvn --version"
     }
 
   stages {
