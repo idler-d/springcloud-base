@@ -1,9 +1,14 @@
 pipeline {
   agent any
-  tools {
-    jdk "1.8_212"
-    maven "v3.3.9"
-  }
+
+  def mvnHome = tool 'v3.3.9'
+  env.PATH = "${mvnHome}/bin:${env.PATH}"
+
+    stage('mvn test'){
+        //mvn 测试
+        sh "mvn test"
+    }
+
   stages {
     stage('build project') {
       steps {
