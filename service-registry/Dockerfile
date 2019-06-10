@@ -6,7 +6,7 @@ ENV WORK_PATH /usr/src/myapp
 
 RUN mkdir $WORK_PATH
 
-COPY target/${JAR_FILE} $WORK_PATH/app.jar
+COPY target/${JAR_FILE} $WORK_PATH
 
 WORKDIR $WORK_PATH
 
