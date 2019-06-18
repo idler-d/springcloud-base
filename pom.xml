@@ -11,7 +11,7 @@
     <modules>
         <module>service-registry</module>
         <module>user-service</module>
-        <module>gateway</module>
+        <module>service-gateway</module>
         <module>auth-service</module>
     </modules>
 
@@ -24,6 +24,8 @@
         <exception.verion>1.0-SNAPSHOT</exception.verion>
         <commons.verion>1.0-SNAPSHOT</commons.verion>
         <jwt.verion>1.0-SNAPSHOT</jwt.verion>
+        <dockerfile.maven.version>1.4.10</dockerfile.maven.version>
+        <docker.registry>registry.idler.com</docker.registry>
     </properties>
 
     <parent>
@@ -104,6 +106,15 @@
         </pluginRepository>
     </pluginRepositories>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile.maven.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,6 @@
+eureka:
+  instance:
+    hostname: localhost
+app:
+  eureka:
+    port: 8761

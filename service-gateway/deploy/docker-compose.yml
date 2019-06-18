@@ -2,9 +2,7 @@ version: '3.4'
 services:
   service-registry:
     build: .
-    image: registry.idler.com/service-registry
-#    ports:
-#      - 8761:8761
+    image: registry.idler.com/service-gateway
     tty: true
     stdin_open: true
     deploy:
