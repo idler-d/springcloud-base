@@ -1,4 +1,4 @@
-package com.idler.demo.passport.exception;
+package com.idler.demo.auth.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

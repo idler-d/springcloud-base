@@ -9,7 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>passport-service</artifactId>
+    <artifactId>auth-service</artifactId>
+
+    <properties>
+        <user.version>1.0-SNAPSHOT</user.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -21,33 +25,27 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
+
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
+            <groupId>com.idler.demo.infrastructure</groupId>
+            <artifactId>exception-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.idler.demo.infrastructure</groupId>
+            <artifactId>myjwt-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.idler.demo.infrastructure</groupId>
             <artifactId>commons</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.idler.demo.infrastructure</groupId>
-            <artifactId>exception-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.idler.demo</groupId>
             <artifactId>user-service-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${user.version}</version>
         </dependency>
     </dependencies>
 </project>

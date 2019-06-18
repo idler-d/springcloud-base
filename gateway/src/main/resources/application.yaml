@@ -22,5 +22,11 @@ zuul:
       path: /users/**
       serviceId: user-service
       strip-prefix: false
+    auth-service:
+      path: /auth/**
+      serviceId: auth-service
+      strip-prefix: false
+  add-host-header: true
+  ignored-services:
 #  strip-prefix: false
 

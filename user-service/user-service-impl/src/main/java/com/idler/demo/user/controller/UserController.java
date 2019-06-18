@@ -4,8 +4,9 @@ import com.idler.demo.user.exception.UserException;
 import com.idler.demo.user.exception.UserExceptionEnum;
 import com.idler.demo.user.pojo.User;
 import com.idler.demo.user.service.UserService;
+import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,7 +41,16 @@ public class UserController {
     return ResponseEntity.ok(user);
   }
 
-  @RequestMapping(value = "query", method = RequestMethod.GET)
+  @PostMapping("/registry")
+  public ResponseEntity<String> reg(User user, String code) {
+    Boolean result = this.userService.register(user,code);
+    if (BooleanUtils.isFalse(result)) {
+      throw new UserException(UserExceptionEnum.CREATE_USER_ERROR);
+    }
+    return ResponseEntity.status(HttpStatus.CREATED).body("创建成功");
+  }
+
+  @GetMapping("/query")
   ResponseEntity<User> queryUser(@RequestParam("username")String username, @RequestParam("password")String password) {
     return ResponseEntity.ok(userService.queryUserByUserNameAndPassword(username, password));
   }

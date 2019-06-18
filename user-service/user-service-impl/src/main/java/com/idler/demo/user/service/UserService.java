@@ -1,6 +1,6 @@
 package com.idler.demo.user.service;
 
-import com.idler.demo.commons.CodecUtils;
+import com.idler.demo.commons.codec.CodecUtils;
 import com.idler.demo.user.exception.UserException;
 import com.idler.demo.user.exception.UserExceptionEnum;
 import com.idler.demo.user.mapper.UserMapper;
@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -52,4 +53,22 @@ public class UserService {
 
     return user;
   }
+
+  public Boolean register(User user, String code) {
+    user.setId(null);
+    user.setCreateTime(new Date());
+    user.setSalt(CodecUtils.createSalt());
+    //密码加密
+    try {
+      user.setPassword(CodecUtils.md5Hex(user.getPassword().trim(), user.getSalt()));
+    } catch (Exception e) {
+      throw new UserException(UserExceptionEnum.CREATE_USER_ERROR);
+    }
+
+    //写入数据库
+    boolean result = userMapper.insertSelective(user) == 1;
+    return result;
+  }
+
+
 }
