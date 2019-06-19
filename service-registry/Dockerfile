@@ -11,4 +11,4 @@ ADD target/${JAR_FILE} $WORK_PATH/app.jar
 
 WORKDIR $WORK_PATH
 
-CMD ["java", "-jar", "-xms64m", "-xmx128m", "app.jar", "--spring.profiles.active=pro"]
+CMD ["java", "-jar", "-Xms64m", "-Xmx128m", "app.jar", "--spring.profiles.active=pro"]
