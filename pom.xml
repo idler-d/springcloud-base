@@ -96,6 +96,12 @@
             <id>nexus-public</id>
             <name>local private nexus</name>
             <url>http://nexus.idler.com/repository/maven-public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
     <pluginRepositories>
