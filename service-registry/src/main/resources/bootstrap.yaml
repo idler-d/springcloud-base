@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: service-registry
+      uri: http://config-server:10010

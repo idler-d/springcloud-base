@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: auth, myjwt, service-registry-client
+      uri: http://config-server:10010

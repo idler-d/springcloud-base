@@ -6,17 +6,22 @@ import com.idler.demo.user.exception.UserExceptionEnum;
 import com.idler.demo.user.mapper.UserMapper;
 import com.idler.demo.user.pojo.User;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserService {
 
   @Resource
   private UserMapper userMapper;
+  @Autowired
+  private StringRedisTemplate stringRedisTemplate;
 
   public List<User> queryUsers() {
     return userMapper.selectAll();
@@ -52,6 +57,12 @@ public class UserService {
     }
 
     return user;
+  }
+
+  public String generateCode(String account) {
+    String code = "2343434";
+    stringRedisTemplate.opsForValue().set("USER_REGISTER_CODE" + account, code, 5, TimeUnit.MINUTES);
+    return code;
   }
 
   public Boolean register(User user, String code) {

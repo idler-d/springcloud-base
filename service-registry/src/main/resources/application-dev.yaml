@@ -1,4 +1,0 @@
-eureka:
-  instance:
-    hostname: localhost
-

@@ -1,6 +1,0 @@
-eureka:
-  instance:
-    hostname: service-registry
-myapp:
-  eureka:
-    port: 8761

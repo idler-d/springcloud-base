@@ -1,9 +1,0 @@
-
-spring:
-  application:
-    name: user-service
-  profiles:
-    active: dev
-#mybatis:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
