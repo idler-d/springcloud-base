@@ -5,6 +5,8 @@ import com.idler.demo.user.exception.UserExceptionEnum;
 import com.idler.demo.user.pojo.User;
 import com.idler.demo.user.service.UserService;
 import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +18,18 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("users")
+@RefreshScope
 public class UserController {
 
   @Resource
   private UserService userService;
+  @Value("${myapp.test}")
+  private String test;
+
+  @GetMapping("test")
+  public ResponseEntity<String> test() {
+    return ResponseEntity.ok(test);
+  }
 
   @GetMapping
   public ResponseEntity<List<User>> users() {

@@ -1,5 +1,5 @@
 spring:
   cloud:
     config:
-      name: service-registry, rabbitmq
+      name: gateway, rabbitmq, service-registry-client
       uri: http://config-server:10010

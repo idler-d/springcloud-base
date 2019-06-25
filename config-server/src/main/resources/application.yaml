@@ -6,7 +6,18 @@ spring:
       server:
         git:
           uri: https://github.com/idler-d/springcloud-basse-config.git
+  rabbitmq:
+    host: 192.168.225.5
+    username: guest
+    password: guest
+    virtual-host: /
   profiles:
     active: dev
 server:
   port: 10010
+
+management: #暴露触发消息总线的地址
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

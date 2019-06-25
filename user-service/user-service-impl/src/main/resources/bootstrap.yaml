@@ -1,5 +1,5 @@
 spring:
   cloud:
     config:
-      name: user, mysql,service-registry-client
+      name: user, mysql, rabbitmq, service-registry-client
       uri: http://config-server:10010
