@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Table
+@Table(name = "users")
 @Data
 public class User {
   @Id

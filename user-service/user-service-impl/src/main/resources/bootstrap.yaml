@@ -1,5 +1,9 @@
 spring:
   cloud:
     config:
-      name: user, mysql, redis, rabbitmq, service-registry-client
+      name: user, oracledatebase, redis, rabbitmq, service-registry-client
       uri: http://config-server:10010
+logging:
+  level:
+    com.cet.diagsyscloud.system.dao: DEBUG
+    com.idler.demo.user.mapper: DEBUG
