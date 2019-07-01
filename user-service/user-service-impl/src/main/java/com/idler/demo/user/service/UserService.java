@@ -1,12 +1,14 @@
 package com.idler.demo.user.service;
 
 import com.idler.demo.commons.codec.CodecUtils;
+import com.idler.demo.user.cache.CacheKeyGenerator;
 import com.idler.demo.user.exception.UserException;
 import com.idler.demo.user.exception.UserExceptionEnum;
 import com.idler.demo.user.mapper.UserMapper;
 import com.idler.demo.user.pojo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -36,11 +38,12 @@ public class UserService {
     return user;
   }
 
-  @Cacheable(CACHE_NAME)
+  @Cacheable(value = CACHE_NAME)
   public User getUserById(String id) {
     return userMapper.selectByPrimaryKey(id);
   }
 
+  @Cacheable(value = CACHE_NAME,keyGenerator = "cacheKeyGenerator")
   public User queryUserByUserNameAndPassword(String username, String password) {
     User record = new User();
     record.setAccount(username);
