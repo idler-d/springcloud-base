@@ -53,7 +53,7 @@ public class UserController {
 
   @PostMapping("/registry")
   public ResponseEntity<String> reg(User user, String code) {
-    Boolean result = this.userService.register(user,code);
+    Boolean result = userService.register(user,code);
     if (BooleanUtils.isFalse(result)) {
       throw new UserException(UserExceptionEnum.CREATE_USER_ERROR);
     }
@@ -63,5 +63,14 @@ public class UserController {
   @GetMapping("/query")
   ResponseEntity<User> queryUser(@RequestParam("username")String username, @RequestParam("password")String password) {
     return ResponseEntity.ok(userService.queryUserByUserNameAndPassword(username, password));
+  }
+
+  @PutMapping
+  ResponseEntity<String> updateUser(User user) {
+    User result = userService.update(user);
+    if (result == null) {
+      throw new UserException(UserExceptionEnum.CREATE_USER_ERROR);
+    }
+    return ResponseEntity.ok("更新成功");
   }
 }

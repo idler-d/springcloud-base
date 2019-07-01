@@ -7,6 +7,8 @@ import com.idler.demo.user.mapper.UserMapper;
 import com.idler.demo.user.pojo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserService {
+
+  private final String CACHE_NAME = "users";
 
   @Resource
   private UserMapper userMapper;
@@ -32,6 +36,7 @@ public class UserService {
     return user;
   }
 
+  @Cacheable(CACHE_NAME)
   public User getUserById(String id) {
     return userMapper.selectByPrimaryKey(id);
   }
@@ -81,5 +86,32 @@ public class UserService {
     return result;
   }
 
+  @CachePut(value = CACHE_NAME, key = "#user.id")
+  public User update(User user) {
 
+    if (StringUtils.isBlank(user.getId())) {
+      throw new UserException(UserExceptionEnum.USER_UNKNOWN);
+    }
+    //获取用户
+    User recordUser = getUserById(user.getId());
+    //用户是否存在
+    if (recordUser == null) {
+      throw new UserException(UserExceptionEnum.USER_UNKNOWN);
+    }
+    //更新记录
+    try {
+      recordUser.setPassword(CodecUtils.md5Hex(user.getPassword(), recordUser.getSalt()));
+      recordUser.setAge(user.getAge());
+      recordUser.setName(user.getName());
+    } catch (Exception e) {
+//      e.printStackTrace();
+      throw new UserException(UserExceptionEnum.INVALID_USERNAME_PASSWORD);
+    }
+
+    //存在则更新
+    if (userMapper.updateByPrimaryKey(recordUser) == 1) {
+      return recordUser;
+    }
+    return null;
+  }
 }
