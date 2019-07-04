@@ -1,5 +1,11 @@
 spring:
   cloud:
     config:
-      name: auth, myjwt, rabbitmq, service-registry-client
+      name: auth, myjwt, rabbitmq, service-registry-client, sleuth_zipkin
       uri: http://config-server:10010
+
+
+logging:
+  level:
+#    org.springframework.web: DEBUG
+    org.springframework.cloud.sleuth: DEBUG

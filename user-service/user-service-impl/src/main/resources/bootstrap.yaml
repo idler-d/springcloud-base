@@ -1,11 +1,22 @@
 spring:
   cloud:
     config:
-      name: user, mysql, redis, rabbitmq, service-registry-client
+      name: user, mysql, redis, rabbitmq, service-registry-client, sleuth_zipkin
       uri: http://config-server:10010
+#  zipkin:
+#    base-url: http://192.168.225.5:9411
+#    sender:
+#      type: web
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#    trace-id128: true
 #  cache:
 #    type: redis
 logging:
   level:
     com.cet.diagsyscloud.system.dao: DEBUG
     com.idler.demo.user.mapper: DEBUG
+#    org.springframework.web: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
+
