@@ -16,6 +16,6 @@ pipeline {
     maven 'v3.3.9'
   }
   environment {
-    DOCKER_HOST = 'tcp://192.168.120.13:2375'
+    DOCKER_HOST = 'tcp://192.168.225.5:2376'
   }
 }
