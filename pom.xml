@@ -93,27 +93,27 @@
     </dependencies>
 
     <!-- local private nexus repositories -->
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <name>local private nexus</name>
-            <url>http://nexus.idler.com/repository/maven-public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus-public</id>
-            <name>local private nexus</name>
-            <url>http://nexus.idler.com/repository/maven-public</url>
-        </pluginRepository>
-    </pluginRepositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>nexus-public</id>-->
+<!--            <name>local private nexus</name>-->
+<!--            <url>http://nexus.idler.com/repository/maven-public</url>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--                <updatePolicy>always</updatePolicy>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>nexus-public</id>-->
+<!--            <name>local private nexus</name>-->
+<!--            <url>http://nexus.idler.com/repository/maven-public</url>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
     <build>
         <pluginManagement>
             <plugins>
