@@ -6,6 +6,7 @@ spring:
       server:
         git:
           uri: https://github.com/idler-d/springcloud-basse-config.git
+          defaultLabel: 1.0.0
 #  rabbitmq:
 #    host: 192.168.225.5
 #    username: guest

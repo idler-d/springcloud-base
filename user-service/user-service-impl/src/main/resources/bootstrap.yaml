@@ -2,7 +2,7 @@ spring:
   cloud:
     config:
 #      name: user, mysql, redis, rabbitmq, service-registry-client, sleuth_zipkin
-      name: user, mysql, redis, service-registry-client, sleuth_zipkin
+      name: user, mysql, service-registry-client, sleuth_zipkin
       uri: http://config-server:10010
 #  zipkin:
 #    base-url: http://192.168.225.5:9411
